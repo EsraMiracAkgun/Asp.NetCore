@@ -1,0 +1,34 @@
+﻿@model DotNetCoreProject.Web.ViewModels.Manage.AssignRoleViewModel
+
+@{
+    ViewData["Title"] = "AssignRole";
+}
+
+<h4>Kullanıcıya Rol Ata</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AssignRole">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label"></label>
+                <select asp-for="RoleId" asp-items="Model.RoleList" class="form-control"></select>
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+            <input asp-for="UserId" type="hidden" />
+            <div class="form-group">
+                <input type="submit" value="Rol Ata" class="btn btn-outline-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Kullanıcı Listesine Dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
